@@ -1,0 +1,51 @@
+<div class="card border-dark">
+  <div class="card-header">
+    <div class="h3">
+      Update Product
+    </div>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="updateProductForm" (ngSubmit)="updateProductNotify.emit()">
+      <div class="form mt-3 mb-3">
+        <select #p (change)="onChange(p.value)" (change)="addId(p.value)" class="form-select">
+          <option [ngValue]="" selected disabled>Select Product</option>
+          <option *ngFor="let product of products | async" [value]="product.id">{{product.productName}}
+          </option>
+        </select>
+      </div>
+      <div *ngIf="selectedProduct">
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="productName" placeholder="product name"
+            formControlName="productName" [(ngModel)]="selectedProduct.productName">
+          <label for="productName" class="form-label">Product Name</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+          <input type="number" class="form-control" id="unitPrice" placeholder="unit price" formControlName="unitPrice"
+            [(ngModel)]="selectedProduct.unitPrice">
+          <label for="unitPrice" class="form-label">Unit Price</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3">
+          <input type="number" class="form-control" id="unitsInStock" placeholder="units in stock"
+            formControlName="unitsInStock" [(ngModel)]="selectedProduct.unitsInStock">
+          <label for="unitsInStock" class="form-label">Units In Stock</label>
+        </div>
+
+        <div class="form-floating mt-3 mb-3" formGroupName="category">
+          <select [ngModel]="selectedProduct.category.id" class="form-select" formControlName="id" id="categoryId"
+            aria-label="cateoryId">
+            <option [ngValue]="null" disabled>
+              {{selectedProduct.category.categoryName}}</option>
+            <option *ngFor="let category of categories | async" [ngValue]="category.id">{{category.categoryName}}
+            </option>
+          </select>
+          <label for="categoryId">Category</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="card-footer">
+    <button for class="btn btn-dark" type="submit" (click)="updateProductNotify.emit()">Update</button>
+  </div>
+</div>

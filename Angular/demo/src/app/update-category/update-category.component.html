@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card-header h3">
+    Update Category
+  </div>
+
+  <div class="card-body">
+    <form [formGroup]="updateCategoryForm" (ngSubmit)="onSubmit.emit()">
+      <div class="form mt-3 mb-3">
+        <select #p (change)="onChange(p.value)" (change)="getId.emit(p.value)" class="form-select">
+          <option [ngValue]="" selected disabled>Select Category</option>
+          <option *ngFor="let category of categories" [value]="category.id">{{category.categoryName}}
+          </option>
+        </select>
+      </div>
+      <div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="categoryName" placeholder="category"
+            formControlName="categoryName" [(ngModel)]="selectedCategory.categoryName">
+          <label for="categoryName" class="form-label">Category Name</label>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="card-footer">
+    <button class="btn btn-dark" type="submit" (click)="onSubmit.emit()">Update</button>
+  </div>
+</div>

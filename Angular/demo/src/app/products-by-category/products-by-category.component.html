@@ -1,0 +1,15 @@
+<div class="row">
+  <div *ngFor="let product of products" class="col-3 d-flex align-items-center justify-content-center">
+    <div class="card mt-3 text-bg-dark border-light" style="width: 18rem;">
+      <div class="card-header border-light border-5 text-center">
+        <p class="card-title">{{product.productName}}</p>
+      </div>
+      <div class="card-body text-bg-dark">
+        <img src="assets/images/defaulImage.png" class="card-img-top" style="width: 16rem; height: 16rem;">
+      </div>
+      <div class="card-footer border-light text-bg-dark">
+        <a [routerLink]="['/products', product.id]" class="btn btn-outline-light">Details</a>
+      </div>
+    </div>
+  </div>
+</div>

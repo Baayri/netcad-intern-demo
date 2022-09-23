@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-6">
+    <app-add-product [addProductForm]="addProductForm" (notify)="onSubmitForAdd()">
+    </app-add-product>
+  </div>
+
+  <div class="col-6">
+    <app-update-product [updateProductForm]="updateProductForm" (updateProductNotify)="onSubmitForUpdate()"
+      (idNotify)="addId($event)">
+    </app-update-product>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="card border-light" style="max-width: 40rem;">
+  <div class="card-header bg-dark text-white h3">
+    Categories
+  </div>
+  <div class="card-body border border-dark mt-1" *ngFor="let category of categories | async">
+    <div class="row">
+      <div class="col-4">
+        {{category.categoryName}}
+      </div>
+      <div class="col-4 d-grid">
+        <button [routerLink]="['/categories',category.id]" class="btn btn-dark">Products</button>
+      </div>
+      <div class="col-4 d-grid">
+        <button class="btn btn-outline-danger" (click)="onDelete(category.id)">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
